@@ -1,12 +1,20 @@
+#This will embed the form HTML in the output.
+#Here, a form will be generated for the object in @page
 <%= form_for(@page) do |f| %>
     <div class="field">
+        #This will output a label for the 'title' field.
         <%= f.label :title %>
+        #This will output a text field 
+        # used to set the title attribute of the Page object
         <%= f.text_field :title %>
     </div>
 
     <div class="field">
+        #This will output a label for the 'body' field.
         <%= f.label :body %>
-        <%= f.text_field :body %>
+        #this will output a larger text field used to set the 
+        #body attribute of the Page object.
+        <%= f.text_area :body %>
     </div>
 
     <div class="field">
@@ -15,6 +23,7 @@
     </div>
 
     <div>
+        #outputs a button used to submit the form
         <%= f.submit %>
     </div>
 
