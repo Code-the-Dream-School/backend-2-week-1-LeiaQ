@@ -12,10 +12,16 @@ class PagesController < ApplicationController
         @page = Page.new
     end
     
-    #
+    #create method to process submission from our form for a new page
     def create
-        @page = Page.new(params)
-        render text: params.to_json
+        # variable to hold our params object, call .require to get page params back .permit to allow params
+       page_params = params.require(:page).permit(:title, :body, :slug)
+       # create a new page object with params set
+       @page = Page.new(page_params)
+       #save page record to our database
+       @page.save
+       # tells the browser to load the view of the new page once its saved with redirect_to method
+       redirect_to @page
     end
 
 end
